@@ -25,8 +25,8 @@ jobs:
 m
       - name: Set git config
         run: |
-          git config --global user.email "YOUR_EMAIL@example.com"
-          git config --global user.name "YOUR_NAME"
+          git config --global user.email "ashoksidhid@gmail.com"
+          git config --global user.name "AshokSidhid"
 
       # Example: Clone another repo if needed (commented for reference)
       # - name: Clone external repo
