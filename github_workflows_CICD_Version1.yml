@@ -1,0 +1,39 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+m
+      - name: Set git config
+        run: |
+          git config --global user.email "YOUR_EMAIL@example.com"
+          git config --global user.name "YOUR_NAME"
+
+      # Example: Clone another repo if needed (commented for reference)
+      # - name: Clone external repo
+      #   run: git clone https://github.com/DinesHTKEC/reponame
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
